@@ -1,0 +1,19 @@
+img{
+  opacity: 30%;
+  margin-top:0%;
+  margin-left: 20%;
+}
+.card {
+  display: inline-block;
+  margin-top: 5%;
+  margin-right:10px;
+  padding: 2rem;
+  box-shadow: 1px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 5px 1px 0 red, 0px 1px 3px 0 rgba(255, 8, 8, 0.12);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  max-width: 25%;
+}
+.valor{
+  color:green;
+}

@@ -1,0 +1,71 @@
+<div class="ui-g">
+  <div class="p-col-12 p-md-6 p-lg-3p">
+    <h1 style="display: block">Cadastro do Livro </h1>
+  </div>
+</div>
+<p-toast></p-toast>
+
+
+<!-----------------------------------Button de novo / e deletar mutiplos------------------------------------->
+<div class="card">
+
+  <!-----------------------------------Configuração e inicio da Tabela------------------------------------->
+  <p-table #dt [value]="pedidos" [rows]="5" [paginator]="true" [responsive]="true" [globalFilterFields]="['pedidoID',
+    'user','pagamento','total','dataCriacao','dataFechamento','anoPublicacao','status']" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+
+    <!-------------------------Titulo da tabela------------------------------->
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <br>
+        <h3 class="p-m-0">Gerenciamento de pedidos</h3>
+        <p-toolbar styleClass="p-mb-4">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" placeholder="Pesquisar..." style="width: 500px;" />
+          </span>
+        </p-toolbar>
+      </div>
+    </ng-template>
+
+    <!----------------------------------Cabeçalho da tabela------------------------------------->
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="p-column-1" pSortableColumn="pedidoID">Codigo <p-sortIcon field="pedidoID"></p-sortIcon></th>
+        <th class="p-column-2" pSortableColumn="user" class="titulo">Cliente <p-sortIcon field="user"></p-sortIcon></th>
+        <th pSortableColumn="pagamento">Pagamento <p-sortIcon field="pagamento"></p-sortIcon></th>
+        <th pSortableColumn="total">Total <p-sortIcon field="total"></p-sortIcon></th>
+        <th pSortableColumn="dataCriacao">Data do pedido <p-sortIcon field="dataCriacao"></p-sortIcon></th>
+        <th pSortableColumn="dataFechamento">Data Fechamento <p-sortIcon field="dataFechamento"></p-sortIcon></th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+
+    <!-------------------------Body da Tabela----------------------------------------------->
+    <ng-template pTemplate="body" let-pedido>
+      <tr>
+        <td>{{pedido.pedidoID}}</td>
+        <td>
+          <h4>{{pedido.user.nome}}</h4>
+        </td>
+        <td>
+          <h5>{{pedido.pagamento.descricao}}</h5>
+        </td>
+        <td>{{pedido.total | currency:'R$'}}</td>
+        <td>{{pedido.dataCriacao | date:'dd/MM/yyyy'}}</td>
+        <td>{{pedido.dataFechamento | date:'dd/MM/yyyy'}}</td>
+        <td>{{pedido.status}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Total de pedidos {{pedidos? pedidos.length : 0 }}.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-------------------------------- menu e rodape---------------------- -->
+<app-menu-admin></app-menu-admin>
+<app-footer-admin></app-footer-admin>
+<!-------------------------Tela de Dialog do livro------------------------------->

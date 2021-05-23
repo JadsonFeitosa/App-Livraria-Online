@@ -1,0 +1,93 @@
+<div class="ui-g">
+  <div class="p-col-12 p-md-6 p-lg-3p">
+    <h1 style="display: block">Cadastro Pagamento </h1>
+  </div>
+</div>
+<p-toast></p-toast>
+<!-----------------------------------Button de novo / e deletar mutiplos------------------------------------->
+<div class="card">
+
+  <!-----------------------------------Configuração e inicio da Tabela------------------------------------->
+  <p-table #dt [value]="pagamentos" [rows]="10" [paginator]="true" [responsive]="true"
+    [globalFilterFields]="['pagamentoId','descricao']" [(selection)]="selectedpagamentos" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+
+    <!-------------------------Titulo da tabela de pagamentos------------------------------->
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <br>
+        <h3 class="p-m-0">Gerenciar pagamentos</h3>
+        <p-toolbar styleClass="p-mb-4">
+          <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success p-mr-2"
+              (click)="openNew()"></button>
+            <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger"
+              (click)="deleteSelected()"></button>
+          </ng-template>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" placeholder="Pesquisar..." style="width: 500px;" />
+          </span>
+        </p-toolbar>
+      </div>
+    </ng-template>
+
+    <!----------------------------------Cabeçalho da tabela------------------------------------->
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="pagamentoId">Código<p-sortIcon field="pagamentoId"></p-sortIcon>
+        </th>
+        <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <!-------------------------Body da Tabela----------------------------------------------->
+    <ng-template pTemplate="body" let-pagamento>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="pagamento"></p-tableCheckbox>
+        </td>
+        <td>{{pagamento.pagamentoId}}</td>
+        <td>{{pagamento.descricao}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+            class="p-button-rounded p-button-success p-mr-2" (click)="update(pagamento)"></button>
+          <button pButton pRipple icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+            class="p-button-rounded p-button-warning" (click)="delete(pagamento.pagamentoId, pagamento.descricao)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Total de pagamentos {{pagamentos ? pagamentos.length : 0 }}.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<!-------------------------------- menu e rodape---------------------- -->
+<app-menu-admin></app-menu-admin>
+<app-footer-admin></app-footer-admin>
+<!-------------------------Tela de Dialog do livro------------------------------->
+<p-dialog [(visible)]="telaDialog" [style]="{width: '450px'}" header="Tela de pagamentos" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="name">Tipo de pagamento</label>
+      <input type="text" autocomplete="false" pInputText id="name" required autofocus [(ngModel)]=pagamento.descricao/>
+      <small class="p-invalid" *ngIf="submitted && !pagamento.descricao">Tipo do pagamento é obrigatorio.</small>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancela" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="save(pagamento)"
+
+    [disabled]="pagamento.descricao === ''"></button>
+  </ng-template>
+</p-dialog>
+<!-------------------------Fim da tela Tela de Dialog do livro------------------------------->
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

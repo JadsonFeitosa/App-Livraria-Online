@@ -1,0 +1,35 @@
+<div class="ui-g">
+  <nav class="navbar">
+    <div class="p-col-12 p-md-6 p-lg-3p logo">
+      <a href="/home/1"><img class="logo" src="assets/img/logo.png" alt="logo"></a>
+    </div>
+  </nav>
+</div>
+<br><br><br><br><br><br>
+<p-orderList [value]="carrinho" [listStyle]="{'max-height':'30rem'}" header="Livros no carrinho"
+  filterBy="titulo" filterPlaceholder="pesquise pelo titulo" [dragdrop]="true">
+  <ng-template let-livro pTemplate="item" >
+    <div class="product-item">
+      <div class="image-container">
+        <img [src]="livro.capa"  [alt]="livro.titulo" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+      </div>
+      <div class="product-list-detail">
+        <h3 class="p-mb-2">{{livro.titulo}}</h3>
+        <i class="pi pi-tag product-category-icon"><span class="product-category"> Categoria: {{livro.categoria}}</span></i>
+
+      </div>
+      <div class="product-list-action">
+        <i class="pi pi-book"><span class="product-category"> Quantidade: {{livro.quantidadeVendida}}</span></i>
+        <h3 class="p-mb-2">{{livro.price * livro.quantidadeVendida | currency:'R$'}}</h3>
+      </div>
+      <div style="margin-left: 50px;"> <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button></div>
+    </div>
+  </ng-template>
+</p-orderList>
+<div class="ui-g">
+  <p-divider></p-divider>
+  <h1 style="text-align: center;">Total do pedido <span style="color: red;">{{total | currency:'R$'}}</span></h1>
+  <p-divider></p-divider>
+  <p-button class="p-col-12 p-md-6 p-lg-3p button" icon="pi pi-check" label="Concluir pedido"
+    (click)="finalizarPedido()"></p-button>
+</div>

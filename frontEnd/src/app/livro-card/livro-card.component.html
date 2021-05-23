@@ -1,0 +1,140 @@
+
+<!-- ======================body da pagina==================================== -->
+<app-carosel></app-carosel>
+<div class="card">
+  <p-dataView #dv [value]="products" [paginator]="true" [rows]="5" filterBy="titulo" [sortField]="sortField"
+    [sortOrder]="sortOrder" >
+
+    <!-- ----------------------header da lista--- -->
+    <ng-template pTemplate="header">
+      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between cab">
+        <p-dropdown [options]="sortOptions" placeholder="Ordenar pelo preço" (onChange)="onSortChange($event)"
+          styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+        <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+          <i class="pi pi-search"></i>
+          <input type="search" pInputText placeholder="Pesquisar...">
+        </span>
+        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+      </div>
+    </ng-template>
+    <!-- --------------------- Lista Normal de livro------------ -->
+    <ng-template let-product pTemplate="listItem">
+      <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="product-list-item">
+          <img [src]="product.capa" [alt]="product.capa" />
+          <div class="product-list-detail">
+            <div class="product-name">{{product.titulo}}</div>
+            <div class="product-description">{{product.edicao}} | {{product.anoPublicacao}} | Ano publiccação:
+              {{product.anoPublicacao}}</div>
+            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.categoria}}</span>
+          </div>
+          <div class="product-list-action">
+            <span class="product-price">{{product.price | currency:'R$'}}</span>
+            <p-button icon="pi pi-arrow-circle-right" label="Detalhes"  (click)="option(product)"></p-button>
+            <p-button icon="pi pi-shopping-cart" label="Adicionar ao carrinho"  (click)="addCarrinho(product.livroId, product.price)"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!------------------------------------- lista em car ds de livro ----------------------------------------------->
+    <ng-template let-product pTemplate="gridItem">
+      <div class="p-col-12 p-md-4">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <div>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">{{product.categoria}}</span>
+            </div>
+            <span>
+              <h6 style="color: red;">Editora:</h6>{{product.editora}}
+            </span>
+          </div>
+          <div class="product-grid-item-content">
+            <img [src]="product.capa" [alt]="product.name" />
+            <div class="product-name">{{product.titulo}}</div>
+            <div class="product-description">{{product.edicao}} | {{product.editora}} | Ano
+              {{product.anoPublicacao}}</div>
+            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+          </div>
+          <br>
+          <div class="product-grid-item-bottom">
+            <span class="product-price">{{product.price | currency:'R$'}}</span>
+            <p-button icon="pi pi-arrow-circle-right" label="Adicionar ao carrinho"  (click)="addCarrinho(product.livroId, product.price)"></p-button>
+            <p-button icon="pi pi-shopping-cart" label="Detalhes"  (click)="option(product)"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>
+
+<!--================================cabeçalho da pagina===================================== -->
+<div class="ui-g p-shadow-4">
+  <nav class="navbar">
+    <div class="ui-g-12">
+      <a href=""><img class="logo" src="assets/img/logo.png" alt="logo"></a>
+    </div>
+    <div class="ui-g-12">
+      <a href="">Central de atendimento | </a>
+      <a href=""> Quem Somos |</a>
+      <a> Siga-nos </a>
+      <a href=""><img class="social v-middle" src="assets/img/zap.png" alt="logo"></a>
+      <a href=""><img class="social v-middle" src="assets/img/face.png" alt="logo"></a>
+      <a href=""><img class="social v-middle" src="assets/img/insta.png" alt="logo"></a>
+      <div class="ui-g-12 ui-fluid">
+        <input class="pesquisa" type="text" pInputText />
+        <p-button class="btn-pesquisa" icon="pi pi-search"></p-button>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-lg-3p user">
+      <a routerLink="carrinho/3"> <img class="user-icone  v-middle" src="assets/img/user.png" alt="logo"></a>
+      <label class="user-icone  v-middle" for="">Nome User</label>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3p cart">
+      <a href="carrinho/{{pedidoid}}">
+        <i class="pi pi-shopping-cart" pBadge  style="font-size: 4rem" [value]="quant" severity="danger"></i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="p-shadow-4">
+  <nav class="navsubbar">
+    <span style="margin-left: 25%;">
+      <a href="home/1"  >Mais vendidos |</a>
+      <a href="home/2">5 Mais Baratos |</a>
+      <a href="home/3">Por cateoria | </a>
+      <a href="home/4">Por Autor |</a>
+      <a href="home/5">Novidades</a>
+    </span>
+  </nav>
+</div>
+
+<script>
+  service('CarrinhoService', function(){
+    var servico = this;
+    servico.listaLivro = [];
+
+    servico.isExisteLivro = function(titulo){
+      return servico.listaLivro.filter(function(livro){return livro.titulo == titulo;})
+    };
+
+    servico.addLivro = function(livro){
+       var existe = servico.isExisteLivro(livro.titulo);
+         if(existe.length>0){
+              existe[0].quantidade++;
+         }else{
+            servico.listaLivro.push({
+              titulo: titulo,
+              capa: capa,
+            })
+         }
+    }
+
+ });
+
+</script>
+<app-rodape-bar></app-rodape-bar>
+

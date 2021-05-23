@@ -1,0 +1,140 @@
+:host ::ng-deep .p-dropdown {
+  margin-right: 2rem;
+  width: 20rem;
+  font-weight: normal;
+}
+:host ::ng-deep .product-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.product-description {
+  margin: 0 0 1rem 0;
+}
+.product-category-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+:host ::ng-deep .product-category {
+  font-weight: 600;
+  vertical-align: middle;
+}
+:host ::ng-deep .product-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+:host ::ng-deep .product-list-item img {
+  width: 150px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-right: 2rem;
+}
+:host ::ng-deep .product-list-item .product-list-detail {
+  flex: 1 1 0;
+}
+:host ::ng-deep .product-list-item .p-rating {
+  margin: 0 0 0.5rem 0;
+}
+:host ::ng-deep .product-list-item .product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  align-self: flex-end;
+}
+:host ::ng-deep .product-list-item .product-list-action {
+  display: flex;
+  flex-direction: column;
+}
+:host ::ng-deep .product-list-item .p-button {
+  margin-bottom: 0.5rem;
+}
+
+/*  começo do grid e produtos */
+:host ::ng-deep .product-grid-item {
+  margin: 0.5em;
+  border: 1px solid #dee2e6;
+  /* max-width: 25%; */
+}
+:host ::ng-deep .product-grid-item .product-grid-item-top, :host ::ng-deep .product-grid-item .product-grid-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host ::ng-deep .product-grid-item img {
+  width: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: 2rem 0;
+}
+:host ::ng-deep .product-grid-item .product-grid-item-content {
+  text-align: center;
+}
+:host ::ng-deep .product-grid-item .product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card {
+  margin-left: 12%;
+  margin-top: 5%;
+  padding: 2rem;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+.cardInterno {
+  display: inline-table;
+  margin-top: 5%;
+  margin-right:10px;
+  padding: 2rem;
+  box-shadow: 1px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 5px 1px 0 red, 0px 1px 3px 0 rgba(255, 8, 8, 0.12);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  max-width: 25%;
+}
+
+@media screen and (max-width: 576px) {
+  :host ::ng-deep .product-list-item {
+    flex-direction: column;
+    align-items: center;
+  }
+  :host ::ng-deep .product-list-item img {
+    width: 75%;
+    margin: 2rem 0;
+  }
+  :host ::ng-deep .product-list-item .product-list-detail {
+    text-align: center;
+  }
+  :host ::ng-deep .product-list-item .product-price {
+    align-self: center;
+  }
+  :host ::ng-deep .product-list-item .product-list-action {
+    display: flex;
+    flex-direction: column;
+  }
+  :host ::ng-deep .product-list-item .product-list-action {
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+.navbar{
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  padding: 10px;
+  margin-left: -8px;
+  margin-right: -8px;
+  background-color:#2B2929 ;
+  height: 80px;
+  width: 100%;
+  }
+
+.logo{
+  margin-left: 1%;
+  max-height: 60px;
+}
+

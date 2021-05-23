@@ -1,0 +1,109 @@
+<div class="ui-g">
+  <div class="p-col-12 p-md-6 p-lg-3p">
+    <h1 style="display: block">Cadastro de Autores </h1>
+  </div>
+</div>
+<p-toast></p-toast>
+<!-- ---------------------------------------------------- -->
+<div class="card p-col-12 p-md-6 p-lg-3p" style="margin-top: 1%;">
+  <p-table #dt [value]="autores" [rows]="10" [paginator]="true" [responsive]="true"
+    [globalFilterFields]="['autorId','nome','sexo','nacionalidade', 'dataNascimento']" [(selection)]="selectedAutors"
+    [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <br>
+        <h3 class="p-m-0">Gerenciar Autores</h3>
+        <p-toolbar styleClass="p-mb-4">
+          <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo" id='novo' icon="pi pi-plus" class="p-button-success p-mr-2"
+              (click)="openNew()"></button>
+            <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelected()"
+              [disabled]="!selectedAutors || !selectedAutors.length"></button>
+          </ng-template>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" placeholder="Pesquisar..." style="width: 500px;" />
+          </span>
+        </p-toolbar>
+
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="autorId">Codigo <p-sortIcon field="autorId"></p-sortIcon>
+        </th>
+        <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon>
+        </th>
+        <th pSortableColumn="sexo">Sexo <p-sortIcon field="sexo"></p-sortIcon>
+        </th>
+        <th pSortableColumn="nacionalidade">Nacionalidade <p-sortIcon field="nacionalidade"></p-sortIcon>
+        </th>
+        <th pSortableColumn="dtNascimento">Data Nascimento <p-sortIcon field="dtNascimento"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-autor>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="autor"></p-tableCheckbox>
+        </td>
+        <td>{{autor.autorId}}</td>
+        <td>{{autor.nome}}</td>
+        <td>{{autor.sexo}}</td>
+        <td>{{autor.nacionalidade}}</td>
+        <td>{{autor.dtNascimento | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+            class="p-button-rounded p-button-success p-mr-2" id="edit" (click)="update(autor)"></button>
+          <button pButton pRipple icon="pi pi-trash"  id="del" pTooltip="Excluir" tooltipPosition="top"
+            class="p-button-rounded p-button-warning" (click)="delete(autor.autorId, autor.nome)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Total de autores {{autores ? autores.length : 0 }}.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<app-menu-admin></app-menu-admin>
+<app-footer-admin></app-footer-admin>
+<!------------------------------------Inicio da tela modelo Dialog------------------------------------------------>
+<p-dialog [(visible)]="autorDialog" [style]="{width: '450px'}" header="Detalhes de autor" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="nome">Nome <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="nome" required autofocus [(ngModel)]=autor.nome />
+    </div>
+
+    <div class="p-field">
+      <h5>Sexo</h5>
+      <p-selectButton [options]="options" id="sexo" optionLabel="label" optionValue="value" [(ngModel)]=autor.sexo>
+      </p-selectButton>
+    </div>
+
+    <div class="p-field" style="width: 200px">
+      <label class="p-mb-3">Nacionalidade</label>
+      <input type="text" pInputText id="nacionalidade" id="nac" [(ngModel)]=autor.nacionalidade />
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Data de Nascimento</label>
+      <p-calendar [(ngModel)]="dataNasc" id="data" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancela" id="cancela" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Salvar" id="save" icon="pi pi-check" class="p-button-text" (click)="save(autor)"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

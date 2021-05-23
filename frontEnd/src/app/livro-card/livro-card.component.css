@@ -1,0 +1,225 @@
+:host ::ng-deep .p-dropdown {
+  margin-right: 2rem;
+  width: 20rem;
+  font-weight: normal;
+}
+:host ::ng-deep .product-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.product-description {
+  margin: 0 0 1rem 0;
+}
+.product-category-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+:host ::ng-deep .product-category {
+  font-weight: 600;
+  vertical-align: middle;
+}
+:host ::ng-deep .product-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+:host ::ng-deep .product-list-item img {
+  width: 150px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-right: 2rem;
+}
+:host ::ng-deep .product-list-item .product-list-detail {
+  flex: 1 1 0;
+}
+:host ::ng-deep .product-list-item .p-rating {
+  margin: 0 0 0.5rem 0;
+}
+:host ::ng-deep .product-list-item .product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  align-self: flex-end;
+}
+:host ::ng-deep .product-list-item .product-list-action {
+  display: flex;
+  flex-direction: column;
+}
+:host ::ng-deep .product-list-item .p-button {
+  margin-bottom: 0.5rem;
+}
+
+/*  começo do grid e produtos */
+:host ::ng-deep .product-grid-item {
+  margin: 0.5em;
+  border: 1px solid #dee2e6;
+  max-width: 25%;
+}
+:host ::ng-deep .product-grid-item .product-grid-item-top, :host ::ng-deep .product-grid-item .product-grid-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host ::ng-deep .product-grid-item img {
+  width: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: 2rem 0;
+}
+:host ::ng-deep .product-grid-item .product-grid-item-content {
+  text-align: center;
+}
+:host ::ng-deep .product-grid-item .product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card {
+  /* display: inline-block; */
+  padding: 2rem;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 576px) {
+  :host ::ng-deep .product-list-item {
+    flex-direction: column;
+    align-items: center;
+  }
+  :host ::ng-deep .product-list-item img {
+    width: 75%;
+    margin: 2rem 0;
+  }
+  :host ::ng-deep .product-list-item .product-list-detail {
+    text-align: center;
+  }
+  :host ::ng-deep .product-list-item .product-price {
+    align-self: center;
+  }
+  :host ::ng-deep .product-list-item .product-list-action {
+    display: flex;
+    flex-direction: column;
+  }
+  :host ::ng-deep .product-list-item .product-list-action {
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+.cart{
+  /* position:fixed; */
+  margin-top: -50%;
+  margin-left: 88%;
+  max-width: 25%;
+  align-content: flex-end;
+}
+
+/* =================comeco do menu bar */
+.navbar{
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  padding: 10px;
+  margin-left: -8px;
+  margin-right: -8px;
+  background-color:#2B2929 ;
+  height: 130px;
+  width: 100%;
+  }
+  .navsubbar{
+  position: fixed;
+  justify-content: center;
+  display: inline-block;
+  top: 20%;
+  margin-left: -8px;
+  margin-right: -8px;
+  padding: 10px;
+  background-color:#413f3f ;
+  color: blanchedalmond;
+  height: 28px;
+  width: 100%;
+  }
+
+  .navsubbar  a {
+    display: inline-block;
+    justify-content: flex-end;
+    margin-left: 2%;
+    text-decoration: none;
+    color:aliceblue;
+
+    }
+
+  .navbar a {
+  top: 0;
+  margin-top: -8%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color:aliceblue;
+  }
+
+  .menu a {
+    top: 0;
+    margin-top: 0%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:aliceblue;
+    }
+    .ui-g-12 a{
+      padding: 5px;
+      display: inline-block;
+    }
+
+    .ui-g-12 div{
+      margin:5%;
+      width: 200%;
+
+    }
+    .ui-g-12 input{
+      width: 80%;
+    }
+
+    .menu .pesquisa {
+      top: 0;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color:aliceblue;
+      }
+
+  .navbar .logo{
+    max-height: 100px;
+  }
+
+  .navbar .social{
+    max-height: 20px;
+  }
+
+  .btn-pesquisa{
+    align-items: baseline
+  }
+   .user{
+     position:relative;
+     margin-top: 5%;
+     margin-left: 5%;
+     align-content: flex-end;
+     color: blanchedalmond;
+   }
+
+   .user .user-icone{
+    max-width: 10%;
+    margin-left: 58%;
+    align-content: flex-end;
+  }
+
+  .cart{
+    position:fixed;
+    margin-top: 0%;
+    margin-left: 88%;
+    max-width: 25%;
+    align-content: flex-end;
+  }

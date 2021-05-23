@@ -1,0 +1,147 @@
+<div class="ui-g">
+  <div class="p-col-12 p-md-6 p-lg-3p">
+    <h1 style="display: block">Cadastro de endereco </h1>
+  </div>
+</div>
+<p-toast></p-toast>
+
+<!-------------------    Buton de novo / deletar multiplos      ------------------------>
+<div class="card p-col-12 p-md-6 p-lg-3p">
+
+  <p-table #dt [value]="enderecos" [rows]="10" [paginator]="true" [responsive]="true" [globalFilterFields]="['endID', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'UF',
+    'complemento', 'pontoReferencia']" [(selection)]="selectedEnderecos" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <br>
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <h3 class="p-m-0">Gerenciar endereco</h3>
+        <p-toolbar styleClass="p-mb-4">
+          <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success p-mr-2"
+              (click)="openNew()"></button>
+            <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelected()"
+              [disabled]="! selectedEnderecos || !selectedEnderecos.length"></button>
+          </ng-template>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" placeholder="Pesquisar..." style="width: 500px;" />
+            <!---(input)="dt.filterGlobal($event.target.value, 'contains')"-->
+          </span>
+        </p-toolbar>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="endID">Codigo <p-sortIcon field="endID"></p-sortIcon>
+        </th>
+        <th pSortableColumn="cep">CEP <p-sortIcon field="cep"></p-sortIcon>
+        </th>
+        <th pSortableColumn="rua">Rua <p-sortIcon field="rua"></p-sortIcon>
+        </th>
+        <th pSortableColumn="numero">Numero <p-sortIcon field="numero"></p-sortIcon>
+        </th>
+        <th pSortableColumn="bairro">Bairro <p-sortIcon field="bairro"></p-sortIcon>
+        </th>
+        <th pSortableColumn="cidade">Cidade <p-sortIcon field="cidade"></p-sortIcon>
+        </th>
+        <th pSortableColumn="UF">UF <p-sortIcon field="UF"></p-sortIcon>
+        </th>
+        <th pSortableColumn="complemento">Complemento <p-sortIcon field="complemento"></p-sortIcon>
+        </th>
+        <th pSortableColumn="pontoReferencia">PontoReferencia <p-sortIcon field="pontoReferencia"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-endereco>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="endereco"></p-tableCheckbox>
+        </td>
+        <td>{{endereco.endID}}</td>
+        <td>{{endereco.rua}}</td>
+        <td>{{endereco.cep}}</td>
+        <td>{{endereco.numero}}</td>
+        <td>{{endereco.bairro}}</td>
+        <td>{{endereco.cidade}}</td>
+        <td>{{endereco.uf}}</td>
+        <td>{{endereco.pontoReferencia}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+            class="p-button-rounded p-button-success p-mr-2" (click)="update(endereco)"></button>
+          <button pButton pRipple icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+            class="p-button-rounded p-button-warning" (click)="delete(endereco.endID)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Total de enderecos {{enderecos ? enderecos.length : 0 }}.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-------------------------------- menu e rodape---------------------- -->
+<app-menu-admin></app-menu-admin>
+<app-footer-admin></app-footer-admin>
+<!------------------------------------Inicio da tela modelo Dialog------------------------------------------------>
+
+<p-dialog [(visible)]="telaDialog" [style]="{width: '450px'}" header="Detalhes de endereco" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <div class="p-field" style="width: 200px">
+      <label class="p-mb-3">Cep <span style="color: red;">*</span> </label>
+      <input type="text" pInputText id="cep" required autofocus [(ngModel)]=endereco.cep />
+      <small class="p-invalid" *ngIf="submitted && !endereco.cep">CEP é obrigatório.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="rua">Rua <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="Rua" required autofocus [(ngModel)]=endereco.rua />
+      <small class="p-invalid" *ngIf="submitted && !endereco.rua">Rua é obrigatório.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="numero">Numero <span style="color: red;">*</span></label>
+      <p-inputNumber id="numero" [(ngModel)]=endereco.numero></p-inputNumber>
+      <small class="p-invalid" *ngIf="submitted && !endereco.numero">Numero é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Bairro <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="bairro" required autofocus [(ngModel)]=endereco.bairro />
+      <small class="p-invalid" *ngIf="submitted && !endereco.bairro">Bairro é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Cidade <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="cidade" required autofocus [(ngModel)]=endereco.cidade />
+      <small class="p-invalid" *ngIf="submitted && !endereco.cidade">Cidade é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">UF<span style="color: red;">*</span></label>
+      <input type="text" pInputText id="UF" required autofocus [(ngModel)]=endereco.UF />
+      <small class="p-invalid" *ngIf="submitted && !endereco.UF">Estado é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Ponto de Referencia<span style="color: red;">*</span></label>
+      <input type="text" pInputText id="pontoReferencia" required autofocus [(ngModel)]=endereco.pontoReferencia />
+      <small class="p-invalid" *ngIf="submitted && !endereco.pontoReferencia">Ponto de refência é obrigatório.</small>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancela" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="save(endereco)"></button>
+  </ng-template>
+
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

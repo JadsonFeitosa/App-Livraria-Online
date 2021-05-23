@@ -1,0 +1,58 @@
+
+.footer{
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+
+  margin-left: -1%;
+  margin-right: 0px;
+  padding: 10px;
+  background-color:#2B2929 ;
+  height: 150px;
+  width: 141%;
+  }
+
+  .subfooter{
+  position: relative;
+  bottom: 0;
+  margin-left: -1%;
+  margin-right: -8px;
+
+  padding: 10px;
+  background-color:#413f3f ;
+  height: 28px;
+  width: 141%;
+  }
+
+  .footer .logo{
+    margin: 10px;
+    max-height: 50px;
+  }
+
+  div{
+    display: inline-block;
+  }
+
+  h6{
+    margin-left: 40%;
+    margin-top: 0px;
+    color: aliceblue;
+  }
+  h5{
+    justify-content: center;
+    margin-top: 0px;
+    color: aliceblue;
+  }
+
+  h4{
+    justify-content: center;
+    margin-top: 0px;
+    color: aliceblue;
+  }
+
+  h3{
+    justify-content: center;
+    margin-top: 0px;
+    color: aliceblue;
+  }

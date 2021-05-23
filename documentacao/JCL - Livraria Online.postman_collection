@@ -1,0 +1,1289 @@
+{
+	"info": {
+		"_postman_id": "95caaccc-3ba9-457b-a8cc-8367059fda2f",
+		"name": "JCL - Livraria Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autor",
+			"item": [
+				{
+					"name": "Cadastrar autor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"luan gosto\",\r\n    \"nacionalidade\" : \"brail\",\r\n    \"sexo\":\"M\",\r\n    \"dtNascimento\":\"1960-04-24\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/autor",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autor"
+							]
+						},
+						"description": "nesta porra e para cadastrar o autor arrombado"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Autores e seus Livros",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/autor?nome=l&size=5&page=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autor"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "l"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca autor pelo nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/autor/buscanome/carlos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autor",
+								"buscanome",
+								"carlos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Autor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"luan\",\r\n    \"sexo\" : \"F\",\r\n    \"nacionalidade\":\"brasil\",\r\n    \"dtNascimento\" : \"2018-03-29\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/autor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete autor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/autor/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autor",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "SalvarCategoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\" : \"Terror\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categoria/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Categoria ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Livro",
+			"item": [
+				{
+					"name": "Cadastro Livro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\" : \"O custo de vida\",\r\n    \"descricao\" : \"O custo de vida fala da vida\",\r\n    \"price\" : \"15.00\",\r\n    \"isbn\" : \"5313434313135O\",\r\n    \"capa\" : \"https://99designs-start-attachments.imgix.net/alchemy-pictures/2016%2F02%2F12%2F00%2F05%2F05%2F910db405-6bd4-4a5d-bce7-c2e3135dc5e6%2F449070_WAntoneta_55908c_killing.png?auto=format&ch=Width%2CDPR&fm=png&w=600&h=600\",\r\n    \"edicao\" : \"edicao 1\",\r\n    \"anoPublicacao\" : \"2018\",\r\n\r\n    \"categoria\" :{\r\n            \"categoriaId\":1\r\n        },\r\n\r\n    \"editora\" : {\r\n            \"editoraId\":1\r\n        },\r\n\r\n    \"estoque\" : {\r\n            \"estoqueid\":1\r\n        },\r\n\r\n    \"listAutor\":[ {\r\n                \"autorId\":1\r\n        }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book?size5&page=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "size5",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista dos 5 books mais baratos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book?tudo&page=0&size=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "tudo",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"titulo\" : \"TUTU\",\r\n    \"descricao\" : \"O custo de vida fala da vida\",\r\n    \"price\" : \"15.00\",\r\n    \"isbn\" : \"5313434313135\",\r\n    \"capa\" : \"fdfdf\",\r\n    \"edicao\" : \"edicao 1\",\r\n    \"anoPublicacao\" : \"2018\",\r\n    \"categoria\" :{\r\n        \"categoriaId\":1\r\n        },\r\n    \"editora\" : {\r\n        \"editoraId\":1\r\n    },\r\n    \"listAutor\":[ {\r\n                \"autorId\":\"1\"\r\n        }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de Livro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"luluzinha\",\r\n    \"email\":\"luanprof30@gmail.com\",\r\n    \"cpf\":\"54545454\",\r\n    \"celular\":\"168110611\",\r\n    \"sexo\": \"M\",\r\n    \"senha\":\"123\",\r\n    \"userPapel\":\"CLIENTE\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Editora",
+			"item": [
+				{
+					"name": "Cadastro de editora",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"cnpj\":\"111115155151\",\r\n   \"nome\" : \"KAKa LKis\",\r\n   \"cep\" : \"58500-000\",\r\n   \"rua\":\"safsdfsd\",\r\n   \"bairro\":\"centro\",\r\n   \"cidade\" : \"monteiro\",\r\n   \"uf\":\"pb\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/editora",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca por nome",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/editora/buscanome/BRINLHATES",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora",
+								"buscanome",
+								"BRINLHATES"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/editora",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista nomes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/editora",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Editora",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/editora/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de Editora",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"editoraId\": 20, \r\n    \"cnpj\": \"11111111111111\", \r\n    \"nome\": \"bay bay\", \r\n    \"cep\": \"CEP de Larissa\", \r\n    \"rua\": \"Rua De Larissa\", \r\n    \"numero\": 21,\r\n    \"bairro\": \"AABB\",\r\n    \"cidade\": \"Monteiro\", \r\n    \"uf\": \"PB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/editora/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"editora",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Editora",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nova Editora",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Editora",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Editora",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estoque",
+			"item": [
+				{
+					"name": "Cadastro de estoque",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"livro\":{\r\n        \"livroId\":1\r\n    },\r\n    \"quantidade\":10\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lISTAR ESTOQUE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Estoque",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:/usuario/estoque?",
+							"host": [
+								"localhost"
+							],
+							"port": "",
+							"path": [
+								"usuario",
+								"estoque"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Salvar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pedidoID\": null,\r\n    \"user\": {\"userID\": 1},\r\n    \"total\":150.0,\r\n    \"dataCriacao\": null,\r\n    \"status\": \"PENDENTE\",\r\n    \"dataFechamento\":\"2021-05-12\",\r\n    \"listaLivro\":[{\"dataVenda\":null,\"quantidadeVendida\":10,\"bookid\":{\"livroId\":4}, \"pedidoid\":1}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Pedido Sem livro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pedidoID\": null,\r\n    \"user\": {\"userID\": 1},\r\n    \"total\":150.0,\r\n    \"dataCriacao\": null,\r\n    \"status\": \"PENDENTE\",\r\n    \"enderecoEntrega\":{\"endID\":0,\"cep\":\"585-000\",\"rua\":\"rua da bebe\", \"numero\":1, \"bairro\":\"centro\",\"cidade\":\"monteiro\", \"uf\":\"PB\",\"complemento\":\"nada\",\"usuario\": 1},\r\n    \"pagamento\":{\"pagamentoId\":1},\r\n    \"dataFechamento\":\"2021-05-12\",\r\n    \"listaPedido\":[{\"dataVenda\":null,\"quantidadeVendida\":10,\"bookid\":4, \"pedidoid\":1}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pedidoID\": null,\r\n    \"user\": {\"userID\": 1},\r\n    \"total\":150.0,\r\n    \"dataCriacao\": null,\r\n    \"status\": \"PENDENTE\",\r\n    \"enderecoEntrega\":{\"endID\":0,\"cep\":\"585-000\",\"rua\":\"rua da bebe\", \"numero\":1, \"bairro\":\"centro\",\"cidade\":\"monteiro\", \"uf\":\"PB\",\"complemento\":\"nada\",\"usuario\": 1},\r\n    \"pagamento\":{\"pagamentoId\":1},\r\n    \"dataFechamento\":\"2021-05-12\",\r\n    \"listaPedido\":[{\"dataVenda\":null,\"quantidadeVendida\":10,\"bookid\":4, \"pedidoid\":1}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Pedido",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:/usuario/pedido?",
+							"host": [
+								"localhost"
+							],
+							"port": "",
+							"path": [
+								"usuario",
+								"pedido"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pedidoID\": null,\r\n    \"user\": {\"userID\": 1},\r\n    \"total\":150.0,\r\n    \"dataCriacao\": null,\r\n    \"status\": \"PENDENTE\",\r\n    \"dataFechamento\":\"\",\r\n    \"listaLivro\":[{\"dataVenda\":\"2021-05-12\",\"quantidadeVendida\":10,\"bookid\":{\"livroId\":4}, \"pedidoid\":1}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedido/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamentos",
+			"item": [
+				{
+					"name": "Lista pag",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pagamentos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar pagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar pagamento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\" : \"cartao credito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar pagamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"cartao debito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pagamento/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamento",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar pagamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pagamento/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamento",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Salvo user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"luluzinha\",\r\n    \"email\":\"luanprof30@gmail.com\",\r\n    \"cpf\":\"54545454\",\r\n    \"celular\":\"168110611\",\r\n    \"sexo\": \"M\",\r\n    \"senha\":\"123\",\r\n    \"userPapel\":\"CLIENTE\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"luluzinha\",\r\n    \"email\":\"luanprof30@gmail.com\",\r\n    \"cpf\":\"54545454\",\r\n    \"celular\":\"168110611\",\r\n    \"sexo\": \"M\",\r\n    \"senha\":\"123\",\r\n    \"userPapel\":\"CLIENTE\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de usuario com endereco",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"jadson\",\r\n\t\r\n\t\"email\": \"rua 1\",\r\n\t\r\n\t\"celular\": \"08989\",\r\n\t\r\n\t\"cpf\": \"11111111180\",\r\n\t\r\n\t\"sexo\": \"M\" ,\r\n\t\r\n\t\"senha\": \"ads\",\r\n\r\n    \"userPapel\": \"ADMINSTRADOR\",\r\n\r\n    \"enderecos\": [{\r\n        \"cep\":5454488,\r\n        \"rua\": \"RU dw \",\r\n        \"numero\":12,\r\n        \"bairro\":\"centro\",\r\n\t    \"cidade\":\"monteiro\",\r\n        \"UF\":\"PB\",\r\n\t    \"complemento\":\"dkdowkdow\",\r\n\t    \"pontoReferencia\":\"ddsiosd\"\r\n     }]\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Jose\",\r\n    \"email\" : \"jose@gmail.com\",\r\n    \"celular\" : \"99928-9267\",\r\n    \"cpf\" : \"99999999992\",\r\n    \"sexo\" : \"M\",\r\n    \"senha\" : \"123456\",\r\n    \"userPapel\" : 0\r\n    \r\n\r\n\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Jose Avelino\",\r\n    \"email\" : \"jose@gmail.com\",\r\n    \"celular\" : \"99928-9267\",\r\n    \"cpf\" : \"99999999992\",\r\n    \"sexo\" : \"M\",\r\n    \"senha\" : \"123456\",\r\n    \"userPapel\" : 0\r\n    \r\n\r\n\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endereço",
+			"item": [
+				{
+					"name": "Listar endereço",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro de endereço",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cep\": 123213,\r\n    \"rua\": \"Rua dos Bobos \",\r\n    \"numero\": 0,\r\n    \"bairro\": \"centro\",\r\n    \"cidade\": \"monteiro\",\r\n    \"UF\": \"PB\",\r\n    \"complemento\": \"dkdasdowkdow\",\r\n    \"pontoReferencia\": \"ddasdsiosd\",\r\n    \"usuario\": {\r\n            \"userID\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

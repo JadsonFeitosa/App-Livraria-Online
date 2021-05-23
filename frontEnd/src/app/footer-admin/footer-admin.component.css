@@ -1,0 +1,26 @@
+
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+
+  margin-left: -15%;
+  margin-right: 0px;
+  padding: 10px;
+  background-color:#2B2929 ;
+  height: 25px;
+  width: 141%;
+  }
+
+  div{
+    max-width: 100%;
+  }
+
+  h4{
+    font-family: monospace;
+    margin-top: -2%;
+    color: aliceblue;
+    justify-content: end;
+  }

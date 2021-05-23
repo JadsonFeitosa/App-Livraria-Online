@@ -1,0 +1,74 @@
+<div class="card ui-g" style="margin-top:12%">
+
+  <div class="p-col-12 p-md-6 p-lg-3 capa-detalhe">
+
+    <img class="img" [src]="livro.capa" [alt]="livro.capa" />
+
+  <div class="p-col-12 p-md-6 p-lg-3 detalhe">
+    <p-toolbar >
+      <div>
+        <h2>{{livro.titulo}}</h2>
+        <p-divider></p-divider>
+
+        <div>
+          <h5>Edição: {{livro.edicao}} | Editora: {{livro.editora}} | Ano de Publicação: {{livro.anoPublicacao}} |
+            Autor: {{livro.autores}}</h5>
+        </div>
+        <p-divider></p-divider>
+
+        <span class="price">Preço: {{livro.price | currency: 'R$'}}</span>
+        <br><br><br><br>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="minmax-buttons">Quantidade</label>
+        <p-inputNumber [(ngModel)]="quantidade" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1"
+          [max]="100">
+        </p-inputNumber>
+      </div>
+      <p-divider></p-divider>
+      <p-button style="margin-right: 2rem;" icon="pi pi-check" label="Comprar Agora" (click)="finalizarPedido()"></p-button>
+      <p-button class="buttonCart" icon="pi pi pi-shopping-cart" label="Adicionar ao carrinho"  (click)="addCarrinho(livro.livroId, livro.price)"></p-button>
+      </div>
+
+    </p-toolbar>
+  </div>
+</div>
+</div>
+
+
+<div class="card">
+  <h2>Descrição do livro</h2>
+  <span>
+    {{livro.descricao}}
+  </span>
+</div>
+<!--================================cabeçalho da pagina===================================== -->
+<div class="ui-g p-shadow-4">
+  <nav class="navbar">
+    <div class="ui-g-12">
+      <a href=""><img class="logo" src="assets/img/logo.png" alt="logo"></a>
+    </div>
+    <div class="ui-g-12">
+      <a href="">Central de atendimento | </a>
+      <a href=""> Quem Somos |</a>
+      <a> Siga-nos </a>
+      <a href=""><img class="social v-middle" src="assets/img/zap.png" alt="logo"></a>
+      <a href=""><img class="social v-middle" src="assets/img/face.png" alt="logo"></a>
+      <a href=""><img class="social v-middle" src="assets/img/insta.png" alt="logo"></a>
+      <div class="ui-g-12 ui-fluid">
+        <input class="pesquisa" type="text" pInputText />
+        <p-button class="btn-pesquisa" icon="pi pi-search"></p-button>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-lg-3p user">
+      <a routerLink="carrinho/3"> <img class="user-icone  v-middle" src="assets/img/user.png" alt="logo"></a>
+      <label class="user-icone  v-middle" for="">Nome User</label>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3p cart">
+      <a href="carrinho/{{pedidoid}}">
+        <i class="pi pi-shopping-cart" pBadge  style="font-size: 4rem" [value]="quant" severity="danger"></i>
+      </a>
+    </div>
+  </nav>
+</div>
+<app-rodape-bar></app-rodape-bar>

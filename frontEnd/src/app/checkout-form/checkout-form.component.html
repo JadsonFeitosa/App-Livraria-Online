@@ -1,0 +1,107 @@
+<nav class="navbar">
+
+  <div class="p-col-12 p-md-6 p-lg-3p logo">
+    <a href="/home/1"><img class="logo" src="assets/img/logo.png" alt="logo"></a>
+  </div>
+</nav>
+
+<div class="card ui-g" style="display: inline-block;">
+
+  <H1 >Finalize seu pedido</H1>
+
+  <p-divider></p-divider>
+  <div class="cardInterno">
+    <i class="pi pi-user"> Dados Pessoais</i>
+    <p-divider></p-divider>
+
+
+    <div class="p-field" style="width: 200px">
+      <label class="p-mb-3">CPF <span style="color: red;">*</span> </label>
+      <input type="text" pInputText id="cpf" required autofocus [(ngModel)]=usuario.cpf />
+      <small class="p-invalid" *ngIf="submitted && !usuario.cpf">CPF é obrigatório.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="rua">Nome <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="nomeuser" required autofocus [(ngModel)]=usuario.nome />
+      <small class="p-invalid" *ngIf="submitted && !usuario.nome">Nome é obrigatório.</small>
+    </div>
+
+    <p-divider></p-divider>
+    <p-button label="Login" icon="pi pi-check"></p-button>
+    <p-divider></p-divider>
+  </div>
+  <!-- ############################################################3 -->
+
+  <div class="cardInterno">
+
+    <i class="pi pi-map"> Dados Pessoais de Envio</i>
+    <p-divider></p-divider>
+
+    <div class="p-field" style="width: 200px">
+      <label class="p-mb-3">Cep <span style="color: red;">*</span> </label>
+      <input type="text" pInputText id="cep" required autofocus [(ngModel)]=endereco.cep />
+      <small class="p-invalid" *ngIf="submitted && !endereco.cep">CEP é obrigatório.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="rua">Rua <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="Rua" required autofocus [(ngModel)]=endereco.rua />
+      <small class="p-invalid" *ngIf="submitted && !endereco.rua">Rua é obrigatório.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="numero">Numero <span style="color: red;">*</span></label>
+      <p-inputNumber id="numero" [(ngModel)]=endereco.numero></p-inputNumber>
+      <small class="p-invalid" *ngIf="submitted && !endereco.numero">Numero é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Bairro <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="bairro" required autofocus [(ngModel)]=endereco.bairro />
+      <small class="p-invalid" *ngIf="submitted && !endereco.bairro">Bairro é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Cidade <span style="color: red;">*</span></label>
+      <input type="text" pInputText id="cidade" required autofocus [(ngModel)]=endereco.cidade />
+      <small class="p-invalid" *ngIf="submitted && !endereco.cidade">Cidade é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">UF<span style="color: red;">*</span></label>
+      <input type="text" pInputText id="UF" required autofocus [(ngModel)]=endereco.UF />
+      <small class="p-invalid" *ngIf="submitted && !endereco.UF">Estado é obrigatório.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="icon">Ponto de Referência<span style="color: red;">*</span></label>
+      <input type="text" pInputText id="pontoReferencia" required autofocus [(ngModel)]=endereco.pontoReferencia />
+      <small class="p-invalid" *ngIf="submitted && !endereco.pontoReferencia">Ponto de refência é obrigatório.</small>
+    </div>
+  </div>
+  <!-- ############################################################# -->
+  <div class="cardInterno">
+
+    <i class="pi pi-money-bill"> Forma de Pagamento</i>
+    <p-divider></p-divider>
+
+
+    <div *ngFor="let pagamento of formaDePagamento" class="p-field-checkbox">
+      <p-radioButton [inputId]="pagamento.key" name="pagamento" [value]="pagamento" [(ngModel)]="selectedpagamentos"
+        [disabled]="pagamento.key === 'R'"></p-radioButton>
+      <label [for]="pagamento.key">{{pagamento.name}}</label>
+    </div>
+
+    <p-divider></p-divider>
+
+    <span style="color: brown;">
+      <h3>Total = {{total | currency: 'R$'}}</h3>
+    </span>
+
+    <p-divider></p-divider>
+    <p-button label="Finalizar Compra" icon="pi pi-check" (click)="finalizarPedido()"></p-button>
+    <p-divider></p-divider>
+  </div>
+
+</div>
